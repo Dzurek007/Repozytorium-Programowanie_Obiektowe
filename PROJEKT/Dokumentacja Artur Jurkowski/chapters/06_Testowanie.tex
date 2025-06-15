@@ -1,0 +1,29 @@
+\section{Testowanie systemu}
+
+\subsection{Strategia testowania}
+System został przetestowany na trzech poziomach:
+\begin{itemize}
+\item Testy jednostkowe (JUnit) - testowanie poszczególnych metod w klasach.
+\item Testy integracyjne - testowanie współdziałania komponentów systemu.
+\item Testy systemowe - testowanie całej aplikacji jako całości.
+\end{itemize}
+
+\subsection{Przykładowe scenariusze testowe}
+\begin{table}[H]
+\centering
+\caption{Przykładowe przypadki testowe}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Scenariusz} & \textbf{Oczekiwany wynik} & \textbf{Status} \\ \hline
+Logowanie użytkownika & Użytkownik zalogowany do systemu & PASS \\ \hline
+Rezerwacja lotu & Rezerwacja poprawnie zapisana w systemie & PASS \\ \hline
+Dodanie użytkownika & Poprawne dodanie  i dodanie do bazy danych  & PASS \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Wyniki testów wydajnościowych}
+\begin{itemize}
+\item Średni czas ładowania ekranu: 0.3s
+\item Maksymalna liczba równoległych rezerwacji: 10
+\item Średni czas przetwarzania rezerwacji: 0.4s
+\end{itemize}

@@ -1,0 +1,109 @@
+\section{Przykłady dziedziczenia w systemie rezerwacji lotów}
+
+\subsection{Klasa bazowa \texttt{Person} i klasy dziedziczące}
+
+W systemie rezerwacji lotów, klasa \texttt{Person} pełni rolę klasy bazowej dla wszystkich osób zaangażowanych w systemie (np. pasażerów). Klasa ta zawiera ogólne dane dotyczące osoby, takie jak imię, nazwisko oraz identyfikator. Na podstawie tej klasy zostały utworzone klasy dziedziczące, takie jak \texttt{Passenger} (Pasażer) i \texttt{VIPPassenger} (Pasażer VIP).
+
+\subsubsection{Kod klasy \texttt{Person}}
+
+Klasa \texttt{Person} zawiera podstawowe dane osobowe, takie jak identyfikator, imię i nazwisko, które są wspólne dla różnych typów użytkowników systemu.
+
+\begin{lstlisting}[language=Java, caption=Klasa Person]
+package com.example.airlinereservation.models;
+
+public class Person {
+    protected int id;
+    protected String firstName;
+    protected String lastName;
+
+    public Person(int id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public int getId() { return id; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+}
+\end{lstlisting}
+
+\subsubsection{Kod klasy \texttt{FrequentPassenger}}
+
+Klasa \texttt{FrequentPassenger} dziedziczy po klasie \texttt{Person}, rozszerzając ją o właściwości związane z częstymi podróżnikami, takie jak numer frequent flyer i liczba mil.
+
+\begin{lstlisting}[language=Java, caption=Klasa FrequentPassenger]
+package com.example.airlinereservation.models;
+
+public class FrequentPassenger extends Person {
+    private String frequentFlyerNumber;
+    private int miles;
+
+    public FrequentPassenger(int id, String firstName, String lastName, String frequentFlyerNumber, int miles) {
+        super(id, firstName, lastName);
+        this.frequentFlyerNumber = frequentFlyerNumber;
+        this.miles = miles;
+    }
+
+    public String getFrequentFlyerNumber() { return frequentFlyerNumber; }
+    public int getMiles() { return miles; }
+}
+\end{lstlisting}
+
+\subsubsection{Kod klasy \texttt{Flight}}
+
+Klasa \texttt{Flight} reprezentuje dane dotyczące lotu, takie jak numer lotu, miejsce startu, miejsce docelowe i data lotu. To klasa, która będzie używana w kontekście rezerwacji i przypisania pasażerów do określonych lotów.
+
+\begin{lstlisting}[language=Java, caption=Klasa Flight]
+package com.example.airlinereservation.models;
+
+import java.time.LocalDate;
+
+public class Flight {
+    private String flightNumber;
+    private String origin;
+    private String destination;
+    private LocalDate date;
+
+    public Flight(String flightNumber, String origin, String destination, LocalDate date) {
+        this.flightNumber = flightNumber;
+        this.origin = origin;
+        this.destination = destination;
+        this.date = date;
+    }
+
+    public String getFlightNumber() { return flightNumber; }
+    public String getOrigin() { return origin; }
+    public String getDestination() { return destination; }
+    public LocalDate getDate() { return date; }
+}
+\end{lstlisting}
+
+\subsubsection{Kod klasy \texttt{InternationalFlight}}
+
+Klasa \texttt{InternationalFlight} dziedziczy po klasie \texttt{Flight} i dodaje specyficzne właściwości, takie jak wymaganie paszportu dla pasażerów.
+
+\begin{lstlisting}[language=Java, caption=Klasa InternationalFlight]
+package com.example.airlinereservation.models;
+
+public class InternationalFlight extends Flight {
+    private boolean passportRequired;
+
+    public InternationalFlight(String flightNumber, String origin, String destination, LocalDate date, boolean passportRequired) {
+        super(flightNumber, origin, destination, date);
+        this.passportRequired = passportRequired;
+    }
+
+    public boolean isPassportRequired() { return passportRequired; }
+}
+\end{lstlisting}
+
+\subsection{Zastosowanie dziedziczenia w systemie}
+
+System rezerwacji lotów w pełni wykorzystuje dziedziczenie, aby uprościć zarządzanie różnymi typami pasażerów oraz lotów. Klasy takie jak \texttt{FrequentPassenger} i \texttt{VIPPassenger} rozszerzają klasę bazową \texttt{Person}, aby dodać szczegółowe informacje dotyczące frequent flyer i statusu VIP, co pozwala na łatwe zarządzanie różnymi rodzajami pasażerów.
+
+Podobnie, klasy takie jak \texttt{Flight} i \texttt{InternationalFlight} dzielą wspólne cechy, ale umożliwiają dodanie specyficznych właściwości, takich jak wymaganie paszportu, co zwiększa elastyczność systemu i pozwala na łatwiejsze dodawanie nowych typów lotów.
+
+\subsection{Podsumowanie}
+
+Dziedziczenie w systemie rezerwacji lotów pozwala na stworzenie przejrzystej hierarchii klas, co sprawia, że kod jest bardziej modularny, łatwiejszy do rozbudowy i utrzymania. Dzięki dziedziczeniu możliwe jest stworzenie ogólnych klas bazowych, które mogą być rozszerzane o specyficzne właściwości, co upraszcza zarządzanie systemem rezerwacji i umożliwia łatwiejszą modyfikację w przyszłości.

@@ -1,0 +1,30 @@
+\section{Opis założeń projektu}
+\subsection{Cel projektu}
+Głównym celem projektu było stworzenie systemu rezerwacji lotów, który:
+\begin{itemize}
+\item Symuluje rzeczywiste operacje związane z rezerwacjami lotów w biurze podróży, w tym operacje zarządzania lotami, pasażerami i rezerwacjami.
+\item Umożliwia łatwe przeglądanie dostępnych lotów przez użytkowników, dzięki interfejsowi graficznemu.
+\item Zapewnia wygodny sposób dokonywania rezerwacji oraz zarządzania rezerwacjami z poziomu panelu użytkownika.
+\item Umożliwia zarządzanie lotami i rezerwacjami przez użytkowników systemu (np. pasażerów).
+\end{itemize}
+
+\subsection{Wymagania funkcjonalne}
+\begin{itemize}
+\item Przeglądanie dostępnych lotów z podziałem na różne kierunki, daty i dostępność, co umożliwia panel użytkownika (klasa \texttt{FlightPanel.java}).
+\item Możliwość składania rezerwacji na wybrane loty przez pasażerów, zintegrowana z bazą danych rezerwacji (klasa \texttt{ReservationDAO.java}).
+(klasa \texttt{Reservation.java}).
+\item Rejestracja użytkowników i autentykacja (klasa \texttt{LoginPanel.java}, \texttt{UserDAO.java}).
+\item Zarządzanie stanem lotów (dodawanie nowych lotów, edytowanie, usuwanie) za pomocą klas \texttt{FlightDAO.java} i \texttt{Flight.java}.
+\item Zarządzanie danymi pasażerów (dodawanie, edytowanie, usuwanie) przez klasy \texttt{PassengerDAO.java}, \texttt{Passenger.java}.
+\item Generowanie raportów dotyczących rezerwacji i finansów (np. raporty transakcji, dostępność lotów) (klasa \texttt{ReservationDAO.java}).
+\item Obsługa rezerwacji poprzez odpowiednią logikę w klasach \texttt{Reservation.java} i \texttt{ReservationPanel.java}.
+\end{itemize}
+
+\subsection{Wymagania niefunkcjonalne}
+\begin{itemize}
+\item Wydajność: Czas odpowiedzi systemu na zapytania użytkownika powinien być poniżej 2 sekund. Zapewnienie szybkiego przetwarzania danych i interakcji z bazą danych.
+\item Bezpieczeństwo: Szyfrowanie danych użytkowników, ochrona danych transakcji oraz dostępność autentykacji użytkowników za pomocą bezpiecznych metod (klasy \texttt{UserDAO.java}, \texttt{LoginPanel.java}).
+\item Kompatybilność: Aplikacja działa na systemach Windows, Linux i MacOS z Java 8+. Zastosowanie Swing zapewnia wsparcie dla różnych platform.
+\item Użyteczność: Przejrzysty i intuicyjny interfejs użytkownika z wykorzystaniem Swing, w tym klasy \texttt{MainFrame.java}, \texttt{FlightPanel.java}, \texttt{ReservationPanel.java}.
+\item Niezawodność: Odporność systemu na błędy użytkowników, łatwe odzyskiwanie danych w przypadku awarii dzięki solidnemu zarządzaniu połączeniem z bazą danych (\texttt{DBConnection.java}).
+\end{itemize}

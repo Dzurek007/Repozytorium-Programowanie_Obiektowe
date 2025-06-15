@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{w3schools}
+https://www.w3schools.com/.
+\newblock w3schools documentation.
+\newblock \url{https://www.w3schools.com/js/default.asp}.
+
+\bibitem{sqlite_doc}
+sqlite.org.
+\newblock Sqlite documentation.
+\newblock \url{https://www.sqlite.org/docs.html}.
+
+\end{thebibliography}
